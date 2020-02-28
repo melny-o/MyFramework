@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 
 public class GetAllCountriesApiDefinitionSteps {
     @Autowired
-    @Qualifier("GetAllCountriesApiSteps")
+    @Qualifier("GetAllCountriesCompositeSteps")
     private CallableService callableService;
 
     @When("^User call Get All Countries service$")
