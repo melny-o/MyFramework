@@ -9,9 +9,10 @@ import org.springframework.stereotype.Component;
 @Qualifier("GetAllCountriesCompositeSteps")
 public class GetAllCountriesCompositeSteps implements CallableService{
 
-    @Autowired
-    private GetAllCountriesApiSteps steps;
+   /* @Autowired
+    private GetAllCountriesApiSteps steps;*/
 
+   private GetAllCountriesApiSteps steps = new GetAllCountriesApiSteps();
     @Override
     public void call(){
         steps.requestAndStoreGetAllCountries();

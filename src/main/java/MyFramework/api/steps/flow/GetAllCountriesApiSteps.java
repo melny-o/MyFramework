@@ -10,9 +10,10 @@ import static MyFramework.core.context.ScenarioContext.environmentContext;
 @Component
 public class GetAllCountriesApiSteps {
 
-    @Autowired
-    private GetAllCountries resource;
+    /*@Autowired
+    private GetAllCountries resource;*/
 
+    private GetAllCountries resource = new GetAllCountries();
     public void requestAndStoreGetAllCountries(){
         environmentContext.setResponse(doApiCall());
     }

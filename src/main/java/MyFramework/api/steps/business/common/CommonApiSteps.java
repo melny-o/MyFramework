@@ -9,14 +9,14 @@ import static io.restassured.RestAssured.given;
 
 public class CommonApiSteps {
 
-    @Value("${all.properties}")
-    private String apiEndpoint;
-
+    /*@Value("${all.properties}")
+    private String apiEndpoint;*/
+    private String apiEndpoint="https://restcountries.eu/rest/v2";
     protected String getApiEndpoint() {
         return apiEndpoint;
     }
 
     public RequestSpecification getCommonRequestSpecification(){
-        return given();
+        return given().queryParam("fields", "capital;region;population");
     }
 }
