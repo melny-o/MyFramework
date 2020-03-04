@@ -12,13 +12,10 @@ private GetCountriesOfRegion resourse;
  */
     private GetCountriesOfRegion resourse = new GetCountriesOfRegion();
 
-    public void requestAndStoreGetCountriesOfRegion(){
-        environmentContext.setResponse(doApiCall());
-    }
-
-    public Response doApiCall(){
-        return resourse.getCommonRequestSpecification()
+    public void requestAndStoreGetCountriesOfRegion(String region){
+        Response response = resourse.getCommonRequestSpecification().pathParam("region", region)
                 .when().get(resourse.getCountriesOfRegionApiEndpoint());
+        environmentContext.setResponse(response);
     }
 
 }

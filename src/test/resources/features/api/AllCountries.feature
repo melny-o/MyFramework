@@ -5,6 +5,11 @@ Feature: All Countries
     Then response status call is 200
 
   Scenario: 1.2  Get Countries Of Region
-    When User call Get Countries Of Region service
+    When User call Get Countries Of Eu Region service
     Then response status call is 200
     And response body contains capital, region and population of each country
+
+   Scenario: 1.3 Get Country USA and check currency
+     When User call Get Country USA
+     Then response status call is 200
+     And currency in response body is USD

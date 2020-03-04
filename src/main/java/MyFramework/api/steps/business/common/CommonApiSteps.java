@@ -17,6 +17,6 @@ public class CommonApiSteps {
     }
 
     public RequestSpecification getCommonRequestSpecification(){
-        return given().queryParam("fields", "capital;region;population");
+        return given();//.queryParam("fields", "capital;region;population");
     }
 }

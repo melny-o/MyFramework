@@ -1,12 +1,9 @@
 package MyFramework.api.steps.business.common;
 
 import MyFramework.api.model.CountryDTO;
-import MyFramework.api.resources.GetAllCountries;
-import MyFramework.api.steps.flow.GetAllCountriesApiSteps;
+import MyFramework.api.model.CurrenciesDTO;
 import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
 import io.restassured.common.mapper.TypeRef;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
@@ -29,6 +26,16 @@ public class ApiResponseDefinitionSteps {
         });
         assertThat(actualResponse)
                 .allMatch(country->!country.getCapital().isEmpty()&&!country.getPopulation().isEmpty()&&!country.getRegion().isEmpty());
-
+        System.out.println(actualResponse);
     }
+
+    @Then("^currency in response body is (\\w+)$")
+    public void verifyCountryCurrency(String _currency){
+        CountryDTO[] actualResponse = environmentContext.getResponse().as(CountryDTO[].class);
+        List<CurrenciesDTO> actualCurrency = actualResponse[0].getCurrencies();
+
+        //.stream().filter(x->x.getCode().equalsIgnoreCase(_currency)).findFirst().orElse(null);
+        assertThat(actualCurrency.get(0).getCode()).isEqualTo(_currency);
+    }
+
 }

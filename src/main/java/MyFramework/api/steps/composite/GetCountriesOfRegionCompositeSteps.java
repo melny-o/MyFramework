@@ -1,17 +1,17 @@
 package MyFramework.api.steps.composite;
 
 import MyFramework.api.steps.flow.GetAllCountriesApiSteps;
+import MyFramework.api.steps.flow.GetCountriesOfRegionApiSteps;
 
-public class GetCountriesOfRegionCompositeSteps implements CallableService{
-
-    private GetAllCountriesApiSteps steps;
+public class GetCountriesOfRegionCompositeSteps{//} implements CallableService{
 
     /* @Autowired
     private GetAllCountriesApiSteps steps;*/
 
-    @Override
+   // private GetCountriesOfRegionApiSteps steps = new GetCountriesOfRegionApiSteps();
+    /*@Override
     public void call(){
-        steps.requestAndStoreGetAllCountries();
-    }
+        steps.requestAndStoreGetCountriesOfRegion();
+    }*/
 
 }
