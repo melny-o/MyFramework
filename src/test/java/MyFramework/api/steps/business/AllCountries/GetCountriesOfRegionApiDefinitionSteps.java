@@ -11,7 +11,7 @@ public class GetCountriesOfRegionApiDefinitionSteps {
 
     //private CallableService callableService = new GetCountriesOfRegionCompositeSteps();
 
-    @When("^User call Get Countries Of (\\w+) Region service$")
+    @When("^Client call Get Countries Of (\\w+) Region service$")
     public void getCountriesOfRegion(String region) {
         GetCountriesOfRegionApiSteps getCountriesOfRegionApiSteps = new GetCountriesOfRegionApiSteps();
         getCountriesOfRegionApiSteps.requestAndStoreGetCountriesOfRegion(region.toLowerCase());

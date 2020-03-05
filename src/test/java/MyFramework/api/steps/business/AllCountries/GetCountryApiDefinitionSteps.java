@@ -7,7 +7,7 @@ public class GetCountryApiDefinitionSteps {
 
     private GetCountryApiSteps getCountryApiSteps = new GetCountryApiSteps();
 
-    @When("^User call Get Country (\\w+)$")
+    @When("^Client call Get Country (\\w+)$")
     public void getCountry(String country){
         getCountryApiSteps.requestAndStoreGetCountry(country);
     }

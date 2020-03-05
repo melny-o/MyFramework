@@ -4,11 +4,14 @@ import MyFramework.api.model.CountryDTO;
 import MyFramework.api.model.CurrenciesDTO;
 import cucumber.api.java.en.Then;
 import io.restassured.common.mapper.TypeRef;
+import io.restassured.response.Response;
 
 import java.util.List;
 
 import static MyFramework.core.context.ScenarioContext.environmentContext;
 import static org.assertj.core.api.Assertions.assertThat;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ApiResponseDefinitionSteps {
     /*@Autowired
@@ -31,11 +34,17 @@ public class ApiResponseDefinitionSteps {
 
     @Then("^currency in response body is (\\w+)$")
     public void verifyCountryCurrency(String _currency){
-        CountryDTO[] actualResponse = environmentContext.getResponse().as(CountryDTO[].class);
-        List<CurrenciesDTO> actualCurrency = actualResponse[0].getCurrencies();
+        List<CountryDTO> actualResponse = environmentContext.getResponse().as(new TypeRef<List<CountryDTO>>() {
+        });
+        List<CurrenciesDTO> actualCurrency = actualResponse.get(0).getCurrencies();
 
         //.stream().filter(x->x.getCode().equalsIgnoreCase(_currency)).findFirst().orElse(null);
         assertThat(actualCurrency.get(0).getCode()).isEqualTo(_currency);
     }
 
+    @Then("^response body is correct with json validation$")
+    public void verifyCountryCurrencyWithJsonValidator(){
+        String actualResponse = environmentContext.getResponse().getBody().asString();
+        assertThat(actualResponse, matchesJsonSchemaInClasspath("test.json"));
+    }
 }

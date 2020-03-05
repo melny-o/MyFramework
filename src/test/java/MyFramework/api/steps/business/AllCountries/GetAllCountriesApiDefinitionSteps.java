@@ -13,7 +13,7 @@ public class GetAllCountriesApiDefinitionSteps {
     @Qualifier("GetAllCountriesCompositeSteps")
     private CallableService callableService;*/
     private CallableService callableService = new GetAllCountriesCompositeSteps();
-    @When("^User call Get All Countries service$")
+    @When("^Client call Get All Countries service$")
     public void callAllCountries(){
         callableService.call();
         System.out.println(environmentContext.getResponse().asString());

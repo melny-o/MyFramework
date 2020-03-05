@@ -2,12 +2,13 @@ package MyFramework.api.model
 
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
-import io.cucumber.datatable.dependency.com.fasterxml.jackson.annotation.JsonIgnoreProperties
-import io.cucumber.datatable.dependency.com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.fasterxml.jackson.annotation.JsonProperty
 
 @ToString
 @EqualsAndHashCode
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonIgnoreProperties(
+        ignoreUnknown = true)
 class CountryDTO {
 
     @JsonProperty("name")
